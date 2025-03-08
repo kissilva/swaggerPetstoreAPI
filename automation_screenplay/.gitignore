@@ -1,0 +1,48 @@
+# IDEs & Editors
+/.idea/
+/.vscode/
+/*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build files
+/build/
+/out/
+/target/
+/bin/
+/.gradle/
+/.history/
+/.settings/
+/.metadata/
+/.scannerwork/
+
+# Gradle wrapper files
+gradlew
+gradlew.bat
+
+# Logs & Temp files
+*.log
+*.tmp
+*.apk
+*.ipa
+*.exe
+*.sh
+
+# Serenity BDD & Reports
+serenity.properties
+/serenity/
+/reports/
+/test-output/
+
+# Java dependencies
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven / Gradle caches (optional, si deseas ignorarlos)
+/.mvn/
+/.m2/
+/gradle/

@@ -1,0 +1,48 @@
+plugins {
+    id "net.serenity-bdd.serenity-gradle-plugin" version "4.0.12"
+    id "java"
+}
+
+ext {
+    serenityVersion = "4.0.12"
+    junitVersion = "5.10.0"
+    cucumberVersion = "7.14.0"
+    restAssuredVersion = "5.3.0"
+    junitPlatformVersion = "1.10.0"
+    logbackVersion = "1.4.14"
+    lombokVersion = "1.18.30"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "net.serenity-bdd:serenity-core:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-cucumber:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-ensure:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay-rest:${serenityVersion}"
+
+    implementation "io.rest-assured:json-schema-validator:5.5.0"
+
+    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+
+    testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+    testImplementation "io.cucumber:cucumber-junit-platform-engine:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-core:${cucumberVersion}"
+    testImplementation "org.junit.vintage:junit-vintage-engine:${junitPlatformVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+
+    implementation "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+}
+
+test {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+}
+
+test.finalizedBy(aggregate)
