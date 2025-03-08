@@ -3,12 +3,12 @@ module.exports = {
         "stress_test": {
             stages: [
                 { duration: '2m', target: 10 }, 
-                // { duration: '5m', target: 20 },
-                // { duration: '5m', target: 40 },
-                // { duration: '5m', target: 60 },
-                // { duration: '5m', target: 80 },
-                // { duration: '5m', target: 100 },
-                // { duration: '10m', target: 0 },
+                { duration: '5m', target: 20 },
+                { duration: '5m', target: 40 },
+                { duration: '5m', target: 60 },
+                { duration: '5m', target: 80 },
+                { duration: '5m', target: 100 },
+                { duration: '10m', target: 0 },
             ],
             thresholds: {
                 http_req_duration: ['p(99)<500'], 
