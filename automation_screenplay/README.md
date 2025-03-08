@@ -36,7 +36,7 @@ src/test/java
 ##  Setup & Installation
 ### 1. **Clone the repository**
 
-    git clone https://github.com/kissilva/SwaggerPetstoreAPI
+    git clone https://github.com/kissilva/swaggerPetstoreAPI.git
     cd SwaggerPetstoreAPI
 
 ### 2. Configure dependencies
