@@ -20,7 +20,7 @@ module.exports = {
     endpoint: "pet",
     method: "POST",
     body: {
-      id: 100,
+      id: 123456,
       name: "NewPet",
       category: { id: 1, name: "Dogs" },
       photoUrls: ["https://example.com/dog.jpg"],

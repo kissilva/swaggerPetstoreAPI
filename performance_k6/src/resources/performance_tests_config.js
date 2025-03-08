@@ -61,6 +61,20 @@ module.exports = {
                 service: 'PetStore API', 
                 type_test: 'scalability_test'
             }
+        },
+        "smoke_test": {
+            vus: 1,
+            duration: '1s',
+            thresholds: {
+                'http_req_duration': ['p(99)<1500'],
+            },
+            tags: {
+                stack: 'GETs',
+                layer: 'TestGets',
+                env: 'qa',
+                service: 'PetStore API',
+                type_test: 'smoke_test'
+            },
         }
     }
 }

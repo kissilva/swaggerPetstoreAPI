@@ -9,9 +9,9 @@ This repository contains solutions for API test automation and performance testi
 ```
 
 ┣  swagger-petstore-testing/
-   ┣ api-test-automation/ # Test automation framework 
-   ┣ api-performance-test/ # Performance testing framework 
-   └── README.md # General project documentation
+   ┣ api-test-automation/ 
+   ┣ api-performance-test/ 
+   └── README.md
    
 ```
 
@@ -38,7 +38,6 @@ cd api-test-automation
 ### Generate Serenity Reports
 ```
 ./gradlew aggregate
-
 open target/site/serenity/index.html
 ```
 ## 2. API Performance Testing
@@ -46,7 +45,7 @@ This project is designed for load, stress, and scalability testing of the Swagge
 
 ### Tech Stack
 - K6 for performance testing
-- Docker & Docker Compose for containerized execution
+- Docker for containerized execution
 - InfluxDB & Grafana for test result visualization 
 ### Test Types
 - Load Testing – Simulates normal user load.
@@ -54,9 +53,9 @@ This project is designed for load, stress, and scalability testing of the Swagge
 - Scalability Testing – Evaluates performance over time.
 ### Run Performance Tests
 ```
-cd api-performance-test
-docker-compose up -d  # Start API, Grafana & InfluxDB
-TYPE_TEST=load_test ENDPOINT_NAME=find_pet_by_id docker-compose run --rm k6 run /src/services/rest/testRunner.js
+    cd api-performance-test
+    docker-compose up -d  # Start API, Grafana & InfluxDB
+    TYPE_TEST=load_test ENDPOINT_NAME=find_pet_by_id docker-compose run --rm k6 run /src/services/rest/test_runner.js
 ```
 ### View Results in Grafana
 - Open: http://localhost:3000
@@ -76,5 +75,15 @@ cd api-test-automation
 ```
 cd api-performance-test
 docker-compose up -d
-docker-compose run --rm k6 run /src/services/rest/testRunner.js
+    TYPE_TEST=<test_type> ENDPOINT_NAME=<endpoint_name> \
+    bash -c 'docker-compose run --rm k6 run -e TYPE_TEST=$TYPE_TEST -e ENDPOINT_NAME=$ENDPOINT_NAME \
+    --console-output=/results/"$TYPE_TEST"_"$ENDPOINT_NAME"_$(date +%Y%m%d-%H%M%S) /src/services/rest/test_runner.js'```
+```
+- Run API Performance Tests-Local:
+
+cd api-performance-test
+    TYPE_TEST=load_test ENDPOINT_NAME=find_pet_by_id \                                                              
+    bash -c 'docker-compose run --rm k6 run -e TYPE_TEST=$TYPE_TEST -e ENDPOINT_NAME=$ENDPOINT_NAME \
+    --console-output=/results/"$TYPE_TEST"_"$ENDPOINT_NAME"_$(date +%Y%m%d-%H%M%S) /src/services/rest/test_runner.js'
+
 ```
