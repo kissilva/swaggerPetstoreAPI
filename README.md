@@ -11,6 +11,10 @@ This repository contains solutions for API test automation and performance testi
 ┣  swagger-petstore-testing/
    ┣ api-test-automation/ 
    ┣ api-performance-test/ 
+   ┣ performance_test_results_k6_grafana/ 
+        ┣ grafana-dashboard/ 
+        ┣ k6-results/ 
+        ┣ performance-grafana-test-results.pdf
    └── README.md
    
 ```
@@ -87,3 +91,6 @@ cd api-performance-test
     --console-output=/results/"$TYPE_TEST"_"$ENDPOINT_NAME"_$(date +%Y%m%d-%H%M%S) /src/services/rest/test_runner.js'
 
 ```
+
+## 3. Performance test results in k6 & grafana
+This folder contains the test results. In the k6-results folder, you can find the K6 log results, and in grafana-dashboard, you will find the Grafana dashboard for each execution. To view the main results, check the performance-grafana-test-results.pdf file.
