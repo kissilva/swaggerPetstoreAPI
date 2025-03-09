@@ -7,7 +7,8 @@ import net.serenitybdd.screenplay.rest.interactions.Get;
 import io.restassured.response.Response;
 import java.util.Map;
 
-import static com.testAutomation.api.utils.TestEnvironments.STORE_INVENTORY;
+import static com.testAutomation.api.utils.Endpoints.STORE_INVENTORY;
+
 
 public class InventoryQuantity implements Question<Integer> {
 

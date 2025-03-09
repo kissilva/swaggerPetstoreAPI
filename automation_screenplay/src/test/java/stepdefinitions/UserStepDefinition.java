@@ -8,8 +8,12 @@ import net.serenitybdd.screenplay.rest.interactions.Get;
 import net.serenitybdd.screenplay.rest.interactions.Post;
 import org.eclipse.jetty.http.HttpStatus;
 
+import static com.testAutomation.api.utils.DataPath.CREATE_USER_DATA;
+import static com.testAutomation.api.utils.DataPath.LOGIN_USER_DATA;
+import static com.testAutomation.api.utils.Endpoints.USER;
+import static com.testAutomation.api.utils.Endpoints.USER_LOGIN;
 import static com.testAutomation.api.utils.JsonReader.readJson;
-import static com.testAutomation.api.utils.TestEnvironments.*;
+import static com.testAutomation.api.utils.SchemasPath.USER_SCHEMA;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
@@ -25,9 +29,7 @@ public class UserStepDefinition {
 
     @Then("the user should be found successfully")
     public void theUserShouldBeFoundSuccessfully() {
-        theActorInTheSpotlight().should(
-                seeThat(ResponseMatchesSchema.forUser())
-        );
+        theActorInTheSpotlight().should(seeThat(ResponseMatchesSchema.forSchema(USER_SCHEMA)));
     }
 
     @Then("the user search should fail")
@@ -50,9 +52,8 @@ public class UserStepDefinition {
 
     @Then("the user should be created successfully")
     public void theUserShouldBeCreatedSuccessfully() {
-        theActorInTheSpotlight().should(
-                seeThat(ResponseMatchesSchema.forUser())
-        );
+        theActorInTheSpotlight().should(seeThat(ResponseMatchesSchema.forSchema(USER_SCHEMA)));
+
     }
 
     @When("the user log in with valid credentials")

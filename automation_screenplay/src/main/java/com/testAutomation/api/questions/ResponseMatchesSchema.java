@@ -16,16 +16,8 @@ public class ResponseMatchesSchema implements Question<Boolean> {
         this.schemaPath = schemaPath;
     }
 
-    public static ResponseMatchesSchema forPet() {
-        return new ResponseMatchesSchema(PET_SCHEMA);
-    }
-
-    public static ResponseMatchesSchema forUser() {
-        return new ResponseMatchesSchema(USER_SCHEMA);
-    }
-
-    public static ResponseMatchesSchema forOrder() {
-        return new ResponseMatchesSchema(ORDER_SCHEMA);
+    public static ResponseMatchesSchema forSchema(String schemaPath) {
+        return new ResponseMatchesSchema(schemaPath);
     }
 
     @Override

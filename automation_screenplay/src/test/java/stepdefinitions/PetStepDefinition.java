@@ -10,8 +10,11 @@ import net.serenitybdd.screenplay.rest.interactions.Post;
 import net.serenitybdd.screenplay.rest.interactions.Put;
 import org.eclipse.jetty.http.HttpStatus;
 
+import static com.testAutomation.api.utils.DataPath.CREATE_PET_DATA;
+import static com.testAutomation.api.utils.DataPath.UPDATE_PET_DATA;
+import static com.testAutomation.api.utils.Endpoints.PET;
 import static com.testAutomation.api.utils.JsonReader.readJson;
-import static com.testAutomation.api.utils.TestEnvironments.*;
+import static com.testAutomation.api.utils.SchemasPath.PET_SCHEMA;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
@@ -25,7 +28,8 @@ public class PetStepDefinition {
 
     @Then("the pet should be found successfully")
     public void petFoundSuccessfully() {
-        theActorInTheSpotlight().should(seeThat(ResponseMatchesSchema.forPet()));
+
+        theActorInTheSpotlight().should(seeThat(ResponseMatchesSchema.forSchema(PET_SCHEMA)));
     }
 
     @Then("the pet search should fail")
@@ -45,7 +49,7 @@ public class PetStepDefinition {
 
     @Then("the pet should be updated successfully")
     public void petUpdatedSuccessfully() {
-        theActorInTheSpotlight().should(seeThat(ResponseMatchesSchema.forPet()));
+        theActorInTheSpotlight().should(seeThat(ResponseMatchesSchema.forSchema(PET_SCHEMA)));
     }
 
     @When("the user creates a new pet with valid data")
@@ -58,7 +62,7 @@ public class PetStepDefinition {
 
     @Then("the pet should be created successfully")
     public void petCreatedSuccessfully() {
-        theActorInTheSpotlight().should(seeThat(ResponseMatchesSchema.forPet()));
+        theActorInTheSpotlight().should(seeThat(ResponseMatchesSchema.forSchema(PET_SCHEMA)));
     }
 
     @When("the user deletes the pet with id {int}")

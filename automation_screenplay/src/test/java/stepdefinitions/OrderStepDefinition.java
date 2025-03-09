@@ -11,8 +11,10 @@ import net.serenitybdd.screenplay.rest.interactions.Get;
 import net.serenitybdd.screenplay.rest.interactions.Post;
 import org.eclipse.jetty.http.HttpStatus;
 
+import static com.testAutomation.api.utils.DataPath.PLACE_ORDER_DATA;
+import static com.testAutomation.api.utils.Endpoints.STORE_ORDER;
 import static com.testAutomation.api.utils.JsonReader.readJson;
-import static com.testAutomation.api.utils.TestEnvironments.*;
+import static com.testAutomation.api.utils.SchemasPath.ORDER_SCHEMA;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
@@ -33,7 +35,7 @@ public class OrderStepDefinition {
 
     @Then("the order should be placed successfully")
     public void orderPlacedSuccessfully() {
-        theActorInTheSpotlight().should(seeThat(ResponseMatchesSchema.forOrder()));
+        theActorInTheSpotlight().should(seeThat(ResponseMatchesSchema.forSchema(ORDER_SCHEMA)));
         int availableAfter = theActorInTheSpotlight().asksFor(InventoryQuantity.current());
         theActorInTheSpotlight().attemptsTo(
                 Ensure.that(availableBefore).isLessThan(availableAfter)
@@ -47,7 +49,7 @@ public class OrderStepDefinition {
 
     @Then("the order should be found successfully")
     public void orderFoundSuccessfully() {
-        theActorInTheSpotlight().should(seeThat(ResponseMatchesSchema.forOrder()));
+        theActorInTheSpotlight().should(seeThat(ResponseMatchesSchema.forSchema(ORDER_SCHEMA)));
     }
 
     @When("the user deletes the order with id {int}")
