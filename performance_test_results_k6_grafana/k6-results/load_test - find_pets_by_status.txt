@@ -1,0 +1,37 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+     execution: local
+        script: /src/services/rest/test_runner.js
+        output: InfluxDBv1 (http://influxdb:8086)
+
+     scenarios: (100.00%) 1 scenario, 40 max VUs, 20m30s max duration (incl. graceful stop):
+              * default: Up to 40 looping VUs for 20m0s over 3 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+     ✓ Status is 200
+
+     checks.........................: 100.00% 22209 out of 22209
+     data_received..................: 33 MB   28 kB/s
+     data_sent......................: 2.8 MB  2.4 kB/s
+     http_req_blocked...............: avg=11.8µs  min=917ns    med=5.95µs   max=5.35ms   p(90)=23.33µs  p(95)=26.58µs 
+     http_req_connecting............: avg=814ns   min=0s       med=0s       max=1.14ms   p(90)=0s       p(95)=0s      
+   ✓ http_req_duration..............: avg=1.17ms  min=127.75µs med=760.58µs max=258.67ms p(90)=2.48ms   p(95)=2.81ms  
+       { expected_response:true }...: avg=1.17ms  min=127.75µs med=760.58µs max=258.67ms p(90)=2.48ms   p(95)=2.81ms  
+   ✓ http_req_failed................: 0.00%   0 out of 22209
+     http_req_receiving.............: avg=74.12µs min=5.45µs   med=48.16µs  max=38.09ms  p(90)=144.17µs p(95)=179.23µs
+     http_req_sending...............: avg=31.89µs min=2.41µs   med=16.5µs   max=5.8ms    p(90)=62.04µs  p(95)=73.75µs 
+     http_req_tls_handshaking.......: avg=0s      min=0s       med=0s       max=0s       p(90)=0s       p(95)=0s      
+     http_req_waiting...............: avg=1.06ms  min=118.41µs med=680.75µs max=258.56ms p(90)=2.27ms   p(95)=2.6ms   
+     http_reqs......................: 22209   18.504577/s
+     iteration_duration.............: avg=1s      min=1s       med=1s       max=1.81s    p(90)=1.01s    p(95)=1.01s   
+     iterations.....................: 22209   18.504577/s
+     vus............................: 1       min=1              max=40
+     vus_max........................: 40      min=40             max=40
+
+
+running (20m00.2s), 00/40 VUs, 22209 complete and 0 interrupted iterations
+default ✓ [======================================] 00/40 VUs  20m0s

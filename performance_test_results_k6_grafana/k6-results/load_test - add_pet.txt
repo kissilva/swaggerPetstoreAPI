@@ -1,0 +1,41 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+     execution: local
+        script: /src/services/rest/test_runner.js
+        output: InfluxDBv1 (http://influxdb:8086)
+
+     scenarios: (100.00%) 1 scenario, 40 max VUs, 20m30s max duration (incl. graceful stop):
+              * default: Up to 40 looping VUs for 20m0s over 3 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+
+     ✗ Status is 200
+      ↳  8% — ✓ 1835 / ✗ 20370
+
+     checks.........................: 8.26%  1835 out of 22205
+     data_received..................: 11 MB  8.9 kB/s
+     data_sent......................: 6.9 MB 5.8 kB/s
+     http_req_blocked...............: avg=10.96µs min=1µs      med=5.79µs   max=5.14ms  p(90)=20.41µs  p(95)=25.28µs 
+     http_req_connecting............: avg=883ns   min=0s       med=0s       max=1.73ms  p(90)=0s       p(95)=0s      
+   ✓ http_req_duration..............: avg=1.13ms  min=161.2µs  med=812.54µs max=47.54ms p(90)=2.29ms   p(95)=2.77ms  
+       { expected_response:true }...: avg=1.92ms  min=255.16µs med=1.63ms   max=47.54ms p(90)=3.05ms   p(95)=3.56ms  
+   ✗ http_req_failed................: 91.73% 20370 out of 22205
+     http_req_receiving.............: avg=61.83µs min=5.66µs   med=46.91µs  max=4.58ms  p(90)=115.33µs p(95)=141.69µs
+     http_req_sending...............: avg=38.17µs min=3.25µs   med=20.25µs  max=16.42ms p(90)=75.87µs  p(95)=92.7µs  
+     http_req_tls_handshaking.......: avg=0s      min=0s       med=0s       max=0s      p(90)=0s       p(95)=0s      
+     http_req_waiting...............: avg=1.03ms  min=146.91µs med=735.66µs max=47.39ms p(90)=2.09ms   p(95)=2.55ms  
+     http_reqs......................: 22205  18.497168/s
+     iteration_duration.............: avg=1s      min=1s       med=1s       max=1.53s   p(90)=1.01s    p(95)=1.01s   
+     iterations.....................: 22205  18.497168/s
+     vus............................: 1      min=1              max=40
+     vus_max........................: 40     min=40             max=40
+
+
+running (20m00.5s), 00/40 VUs, 22205 complete and 0 interrupted iterations
+default ✓ [======================================] 00/40 VUs  20m0s
+ERRO[1200] thresholds on metrics 'http_req_failed' have been crossed 
+exit status 99

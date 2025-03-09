@@ -1,0 +1,38 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+     execution: local
+        script: /src/services/rest/test_runner.js
+        output: InfluxDBv1 (http://influxdb:8086)
+
+     scenarios: (100.00%) 1 scenario, 200 max VUs, 38m30s max duration (incl. graceful stop):
+              * default: Up to 200 looping VUs for 38m0s over 7 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+WARN[2233] The flush operation took higher than the expected set push interval. If you see this message multiple times then the setup or configuration need to be adjusted to achieve a sustainable rate.  output=InfluxDBv1 t=1.065432084s
+
+     ✗ Status is 200
+      ↳  0% — ✓ 0 / ✗ 186382
+
+     checks.....................: 0.00%   0 out of 186382
+     data_received..............: 89 MB   39 kB/s
+     data_sent..................: 58 MB   25 kB/s
+     http_req_blocked...........: avg=5.13µs   min=916ns    med=3.04µs   max=8.35ms p(90)=7.37µs   p(95)=12.58µs
+     http_req_connecting........: avg=466ns    min=0s       med=0s       max=8.23ms p(90)=0s       p(95)=0s     
+   ✓ http_req_duration..........: avg=517.08µs min=108.37µs med=339.91µs max=69.6ms p(90)=917.66µs p(95)=1.45ms 
+   ✗ http_req_failed............: 100.00% 186382 out of 186382
+     http_req_receiving.........: avg=32.7µs   min=4.83µs   med=22.87µs  max=5.23ms p(90)=63.16µs  p(95)=87.66µs
+     http_req_sending...........: avg=24.12µs  min=2.54µs   med=9.16µs   max=7.37ms p(90)=32.2µs   p(95)=74.37µs
+     http_req_tls_handshaking...: avg=0s       min=0s       med=0s       max=0s     p(90)=0s       p(95)=0s     
+     http_req_waiting...........: avg=460.25µs min=96.95µs  med=297.33µs max=69.5ms p(90)=800.27µs p(95)=1.3ms  
+     http_reqs..................: 186382  81.72616/s
+     iteration_duration.........: avg=1s       min=1s       med=1s       max=1.95s  p(90)=1.01s    p(95)=1.02s  
+     iterations.................: 186382  81.72616/s
+     vus........................: 1       min=1                max=200
+     vus_max....................: 200     min=200              max=200
+
+
+running (38m00.6s), 000/200 VUs, 186382 complete and 0 interrupted iterations
